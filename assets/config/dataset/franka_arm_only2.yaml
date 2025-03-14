@@ -1,0 +1,25 @@
+name: "franka_arm_only"
+dump_dir: "data/franka_arm_only2"
+remove_exists: False
+debug: False
+cam_mode: custom
+
+up_vector: [0., 0., 1.]
+views:
+  spherical:
+    num_views: 8
+    radius: 1.4
+    cam_height: 2.0
+    lookat: [0., 0., 0.5]
+  base:
+    cam_pos: [0., 0.1, 2.5]
+    lookat: [0., 0., 0.]
+
+robot:
+  type: "franka"
+  random_joint_pos: True
+
+sensor:
+  depth: True
+
+num_samples: 100000

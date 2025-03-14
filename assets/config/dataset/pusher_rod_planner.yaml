@@ -1,0 +1,11 @@
+dump_dir: "data/pusher/rod"
+num_trajs: 200
+remove_exists: False
+horizon: 50
+debug: False
+use_obj: True
+train_val_split: 0.8
+num_blocks: 1
+object_type: ["rod"]
+segmentation_type: "object"
+object_xy_pos: [[0, -0.25]]

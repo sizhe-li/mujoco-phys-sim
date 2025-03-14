@@ -1,0 +1,66 @@
+exp_name: transformer_large
+inference: False
+resume: False
+ckpt: ""
+
+data:
+  debug: False
+
+  dataset_name: self-model
+  rel_location: "data/franka_arm_only2/"
+
+  batch_size: 128
+  num_workers: 4
+  subsample_ray: 256
+
+  norm_qpos_min: -1.0
+  norm_qpos_max: 1.0
+
+  near: 0.00
+  far: 4.45
+
+  img_res: [256, 256]
+  output_size: [128, 128]
+
+  use_depth: False
+  ret_patch: False
+
+
+test_views:
+  spherical:
+    num_views: 100
+    radius: 2.0
+    cam_height: 1.5
+    lookat: [0., 0., 0.5]
+
+optim:
+  lr: 1e-3
+  total_steps: 1000000
+  vis_every: 1000
+  save_every: 1000
+
+
+model:
+  rf:
+    feat_dim: 128
+    pos_octave: 10
+    ray_octave: 4
+    n_joints: 8
+
+    encoder_depth: 5
+    decoder_depth: 2
+    heads: 12
+
+    depth_render_head: 2
+    token_mode: 'mult'
+
+
+  renderer:
+    n_coarse: 64
+    n_fine: 64
+    perturb: 0.0
+    use_lindisp: False
+    chunk: 16384 # 32 * 1024 = 32768
+    bkgd_color:
+
+

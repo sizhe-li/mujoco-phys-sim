@@ -1,0 +1,6 @@
+dump_dir: "data/capsule_only"
+num_trajs: 10000
+remove_exists: False
+horizon: 50
+debug: False
+use_obj: False

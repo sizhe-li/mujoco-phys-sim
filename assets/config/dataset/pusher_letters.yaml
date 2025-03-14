@@ -1,0 +1,7 @@
+dump_dir: "data/pusher_letters"
+num_trajs: 1000
+remove_exists: True
+horizon: 50
+debug: False
+use_obj: True
+train_val_split: 0.8

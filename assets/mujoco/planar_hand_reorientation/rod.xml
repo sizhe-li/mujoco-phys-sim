@@ -1,0 +1,18 @@
+<mujoco model="rod">
+    <asset>
+        <mesh file="../objects/meshes/rod.obj" name="rod_mesh" scale="0.0005 0.005 0.005" />
+        <!-- <texture builtin="flat" height="1" name="rod_texture" rgb1="0.8 0.6 0.4" type="2d"
+            width="1" /> -->
+        <texture type="2d" name="rod_texture"
+            file="../textures/dark-wood.png" />
+        <material name="rod_material" texture="rod_texture" texrepeat="1 1"
+            texuniform="true" />
+
+    </asset>
+    <worldbody>
+        <body name="box">
+            <geom pos="-0.35 -0.5 0" mesh="rod_mesh" type="mesh" material="rod_material"
+                density="150" group="0" condim="4" />
+        </body>
+    </worldbody>
+</mujoco>

@@ -1,0 +1,23 @@
+exp_name: disentangle_2d
+inference: False
+resume: False
+ckpt: ""
+
+data:
+  robot_name: "pusher"
+  root: "data/pusher_box/"
+
+  batch_size: 128
+  num_workers: 16
+  overfit_to_index: null
+  trgt_img_size: null
+
+
+optim:
+  lr: 1e-3
+  total_steps: 1000000
+  vis_every: 1000
+  save_every: 1000
+
+model:
+

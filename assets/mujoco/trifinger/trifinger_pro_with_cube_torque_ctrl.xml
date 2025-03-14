@@ -1,0 +1,157 @@
+<mujoco model="trifingerpro">
+    <compiler angle="radian" />
+    <size njmax="500" nconmax="100" />
+    <asset>
+        <mesh name="prox-sim" file="./meshes/pro/prox-sim.stl" />
+        <mesh name="int_sim" file="./meshes/pro/int_sim.stl" />
+        <mesh name="tip_link_sim" file="./meshes/pro/tip_link_sim.stl" />
+        <mesh name="tip_sim" file="./meshes/pro/tip_sim.stl" />
+	<mesh name="motor_sim" file="./meshes/pro/motor_sim.stl" />
+    </asset>
+    <worldbody>
+        <light directional="false" diffuse=".5 .5 .5" specular="0.3 0.3 0.3" pos="0 0 4.0" dir="0 0 -1" castshadow="false"/>
+        <light directional="false" diffuse=".5 .5 .5" specular="0.3 0.3 0.3" pos="0 4.0 0.2" dir="0 -1 0" castshadow="false"/>
+        <light directional="false" diffuse=".5 .5 .5" specular="0.3 0.3 0.3" pos="0 -4.0 0.2" dir="0 1 0" castshadow="false"/>
+        <light directional="false" diffuse=".5 .5 .5" specular="0.3 0.3 0.3" pos="4.0 0.0 0.2" dir="-1 0 0" castshadow="false"/>
+        <light directional="false" diffuse=".5 .5 .5" specular="0.3 0.3 0.3" pos="-4.0 0.0 0.2" dir="1 0 0" castshadow="false"/>
+
+	<body name="target" pos="0 0.0 0.025">
+	  <geom name="target" size="0.025 0.025 0.025" type="box" conaffinity="0" contype="0" rgba="1 0 0 0.1" />
+
+	  <!-- add coordinate system -->
+          <geom pos="0.0 0.0 0.025" type="cylinder" rgba="0.0 0.0 1.0 1.0" size="0.001 0.025" conaffinity="0" contype="0"/>
+          <geom pos="0.0 0.025 0.0" axisangle="1 0 0 1.5707963267948966" type="cylinder" rgba="0.0 1.0 0.0 1.0" size="0.001 0.025" conaffinity="0" contype="0"/>
+          <geom pos="0.025 0.0 0.0" axisangle="0 1 0 1.5707963267948966" type="cylinder" rgba="1.0 0.0 0.0 1.0" size="0.001 0.025" conaffinity="0" contype="0"/>
+	</body>
+
+	<body name="cube" pos="0.0 0.0 0.025">
+          <freejoint name="cube_table"/>
+          <geom name="cube_geom" type="box" mass="0.05" size="0.025 0.025 0.025" quat="1 0 0 0" friction="0.5 0.005 0.0001" rgba="0.5 0.5 0 1.0"/>
+
+	  <!-- add colors to the cube's surfaces -->
+          <geom pos="0.0 0.0 0.0251" type="box" rgba="0.4 0.4 1.0 1.0" size="0.025 0.025 0.00001" conaffinity="0" contype="0"/>
+          <geom pos="0.0 0.0 -0.0251" type="box" rgba="0.0 0.8 0.4 1.0" size="0.025 0.025 0.00001" conaffinity="0" contype="0"/>
+          <geom pos="0.0251 0.0 0.0" type="box" rgba="0.0 1.0 1.0 1.0" size="0.00001 0.025 0.025" conaffinity="0" contype="0"/>
+          <geom pos="-0.0251 0.0 0.0" type="box" rgba="1.0 0.6 0.2 1.0" size="0.00001 0.025 0.025" conaffinity="0" contype="0"/>
+          <geom pos="0.0 0.0251 0.0" type="box" rgba="1.0 0.2 0.2 1.0" size="0.025 0.00001 0.025" conaffinity="0" contype="0"/>
+          <geom pos="0.0 -0.0251 0.0" type="box" rgba="1.0 1.0 0.0 1.0" size="0.025 0.00001 0.025" conaffinity="0" contype="0"/>
+
+	  <!-- add coordinate system -->
+          <geom pos="0.0 0.0 0.025" type="cylinder" rgba="0.0 0.0 1.0 1.0" size="0.001 0.025" conaffinity="0" contype="0"/>
+          <geom pos="0.0 0.025 0.0" axisangle="1 0 0 1.5707963267948966" type="cylinder" rgba="0.0 1.0 0.0 1.0" size="0.001 0.025" conaffinity="0" contype="0"/>
+          <geom pos="0.025 0.0 0.0" axisangle="0 1 0 1.5707963267948966" type="cylinder" rgba="1.0 0.0 0.0 1.0" size="0.001 0.025" conaffinity="0" contype="0"/>
+	</body>
+
+        <geom pos="0.0 0.0 -0.01" type="box" rgba="0.31 0.27 0.25 1" size="0.5 0.5 0.01" friction="1.0 0.005 0.0001"/>
+
+        <body name="finger_upper_link_0" pos="0 0 0.29">
+          <inertial pos="0.006 0.122 0" quat="0.706381 0.7052 0.0462414 -0.0397478" mass="0.26689" diaginertia="0.00102372 0.00102223 6.44164e-05" />
+          <joint name="finger_base_to_upper_joint_0" pos="0 0 0" axis="0 1 0" limited="true" range="-0.33 1" />
+          <geom type="mesh" rgba="0.804 0.764 0.761 1" mesh="prox-sim" />
+
+	  <body name="finger_upper_link_visuals_0" pos="0 0 0">
+            <geom pos="0.01569 0.1643 0" type="mesh" rgba="0.17 0.17 0.17 1.0" mesh="motor_sim" conaffinity="0" contype="0"/>
+            <geom pos="0.015 0.083 0" axisangle="0 1 0 1.5707963267948966" type="cylinder" size="0.005 0.0075" rgba="0.17 0.17 0.17 1.0" conaffinity="0" contype="0"/>
+            <geom pos="-0.008 0.124 0" axisangle="1 0 0 1.5707963267948966" type="cylinder" size="0.002 0.06" rgba="0.17 0.17 0.17 1.0" conaffinity="0" contype="0"/>
+            <geom pos="-0.0085 0.050 0" axisangle="0 1 0 1.5707963267948966" type="cylinder" size="0.014 0.001" rgba="0.6 0.0 0.0 1.0" conaffinity="0" contype="0"/>
+	  </body>
+
+          <body name="finger_middle_link_0" pos="0.01685 0.0505 0">
+
+	    <body name="finger_middle_link_visuals_0" pos="0 0 0">
+	      <geom pos="0.0488 0 -0.0462" type="mesh" rgba="0.17 0.17 0.17 1.0" mesh="motor_sim" conaffinity="0" contype="0"/>
+	      <geom pos="0.0488 0 -0.13" axisangle="0 1 0 1.5707963267948966" type="cylinder" size="0.005 0.0075" rgba="0.17 0.17 0.17 1.0" conaffinity="0" contype="0"/>
+	      <geom pos="0.025 0 -0.09" type="cylinder" size="0.002 0.06" rgba="0.17 0.17 0.17 1.0" conaffinity="0" contype="0"/>
+	      <geom pos="0.024 0 -0.16" axisangle="0 1 0 1.5707963267948966" type="cylinder" size="0.014 0.001" rgba="0.17 0.17 0.17 1.0" conaffinity="0" contype="0"/>
+	    </body>
+
+            <inertial pos="0.0393501 -0.00012438 -0.086667" quat="0.676911 0.0153968 0.0129048 0.735791" mass="0.27163" diaginertia="0.000948287 0.000941953 7.43298e-05" />
+            <joint name="finger_upper_to_middle_joint_0" pos="0 0 0" axis="1 0 0" limited="true" range="0 1.57" />
+            <geom type="mesh" rgba="0.804 0.764 0.761 1" mesh="int_sim" />
+            <body name="finger_lower_link_0" pos="0.05015 0 -0.16">
+              <inertial pos="0.0172829 -7.03432e-06 -0.0847363" quat="1 8.17879e-05 0.000475957 -0.00013458" mass="0.08669" diaginertia="0.000410131 0.000407733 7.32858e-06" />
+              <joint name="finger_middle_to_lower_joint_0" pos="0 0 0" axis="1 0 0" limited="true" range="-2.7 0" />
+              <geom type="mesh" rgba="0.804 0.764 0.761 1" mesh="tip_link_sim" />
+              <geom pos="0.019 0 -0.16" type="mesh" rgba="0.33 0.36 0.37 1" mesh="tip_sim" />
+            </body>
+          </body>
+	</body>
+
+        <body name="finger_upper_link_120" pos="0 0 0.29" quat="0.5 0 0 -0.866025">
+            <inertial pos="0.006 0.122 0" quat="0.706381 0.7052 0.0462414 -0.0397478" mass="0.26689" diaginertia="0.00102372 0.00102223 6.44164e-05" />
+            <joint name="finger_base_to_upper_joint_120" pos="0 0 0" axis="0 1 0" limited="true" range="-0.33 1" />
+            <geom type="mesh" rgba="0.804 0.764 0.761 1" mesh="prox-sim" />
+
+	    <body name="finger_upper_link_visuals_120" pos="0 0 0">
+              <geom pos="0.01569 0.1643 0" type="mesh" rgba="0.17 0.17 0.17 1.0" mesh="motor_sim" conaffinity="0" contype="0"/>
+              <geom pos="0.015 0.083 0" axisangle="0 1 0 1.5707963267948966" type="cylinder" size="0.005 0.0075" rgba="0.17 0.17 0.17 1.0" conaffinity="0" contype="0"/>
+              <geom pos="-0.008 0.124 0" axisangle="1 0 0 1.5707963267948966" type="cylinder" size="0.002 0.06" rgba="0.17 0.17 0.17 1.0" conaffinity="0" contype="0"/>
+              <geom pos="-0.0085 0.050 0" axisangle="0 1 0 1.5707963267948966" type="cylinder" size="0.014 0.001" rgba="0.0 0.6 0.0 1.0" conaffinity="0" contype="0"/>
+
+	    </body>
+            <body name="finger_middle_link_120" pos="0.01685 0.0505 0">
+                <inertial pos="0.0393501 -0.00012438 -0.086667" quat="0.676911 0.0153968 0.0129048 0.735791" mass="0.27163" diaginertia="0.000948287 0.000941953 7.43298e-05" />
+                <joint name="finger_upper_to_middle_joint_120" pos="0 0 0" axis="1 0 0" limited="true" range="0 1.57" />
+
+	      <body name="finger_middle_link_visuals_120" pos="0 0 0">
+		<geom pos="0.0488 0 -0.0462" type="mesh" rgba="0.17 0.17 0.17 1.0" mesh="motor_sim" conaffinity="0" contype="0"/>
+		<geom pos="0.0488 0 -0.13" axisangle="0 1 0 1.5707963267948966" type="cylinder" size="0.005 0.0075" rgba="0.17 0.17 0.17 1.0" conaffinity="0" contype="0"/>
+		<geom pos="0.025 0 -0.09" type="cylinder" size="0.002 0.06" rgba="0.17 0.17 0.17 1.0" conaffinity="0" contype="0"/>
+              <geom pos="0.024 0 -0.16" axisangle="0 1 0 1.5707963267948966" type="cylinder" size="0.014 0.001" rgba="0.17 0.17 0.17 1.0" conaffinity="0" contype="0"/>
+	      </body>
+                <geom type="mesh" rgba="0.804 0.764 0.761 1" mesh="int_sim" />
+                <body name="finger_lower_link_120" pos="0.05015 0 -0.16">
+                    <inertial pos="0.0172829 -7.03432e-06 -0.0847363" quat="1 8.17879e-05 0.000475957 -0.00013458" mass="0.08669" diaginertia="0.000410131 0.000407733 7.32858e-06" />
+                    <joint name="finger_middle_to_lower_joint_120" pos="0 0 0" axis="1 0 0" limited="true" range="-2.7 0" />
+                    <geom type="mesh" rgba="0.804 0.764 0.761 1" mesh="tip_link_sim" />
+                    <geom pos="0.019 0 -0.16" type="mesh" rgba="0.33 0.36 0.37 1" mesh="tip_sim" />
+                </body>
+            </body>
+        </body>
+        <body name="finger_upper_link_240" pos="0 0 0.29" quat="-0.5 0 0 -0.866025">
+            <inertial pos="0.006 0.122 0" quat="0.706381 0.7052 0.0462414 -0.0397478" mass="0.26689" diaginertia="0.00102372 0.00102223 6.44164e-05" />
+            <joint name="finger_base_to_upper_joint_240" pos="0 0 0" axis="0 1 0" limited="true" range="-0.33 1" />
+            <geom type="mesh" rgba="0.804 0.764 0.761 1" mesh="prox-sim" />
+
+	    <body name="finger_upper_link_visuals_240" pos="0 0 0">
+              <geom pos="0.01569 0.1643 0" type="mesh" rgba="0.17 0.17 0.17 1.0" mesh="motor_sim" conaffinity="0" contype="0"/>
+              <geom pos="0.015 0.083 0" axisangle="0 1 0 1.5707963267948966" type="cylinder" size="0.005 0.0075" rgba="0.17 0.17 0.17 1.0" conaffinity="0" contype="0"/>
+              <geom pos="-0.008 0.124 0" axisangle="1 0 0 1.5707963267948966" type="cylinder" size="0.002 0.06" rgba="0.17 0.17 0.17 1.0" conaffinity="0" contype="0"/>
+              <geom pos="-0.0085 0.050 0" axisangle="0 1 0 1.5707963267948966" type="cylinder" size="0.014 0.001" rgba="0.0 0.0 0.6 1.0" conaffinity="0" contype="0"/>
+	    </body>
+
+            <body name="finger_middle_link_240" pos="0.01685 0.0505 0">
+                <inertial pos="0.0393501 -0.00012438 -0.086667" quat="0.676911 0.0153968 0.0129048 0.735791" mass="0.27163" diaginertia="0.000948287 0.000941953 7.43298e-05" />
+                <joint name="finger_upper_to_middle_joint_240" pos="0 0 0" axis="1 0 0" limited="true" range="0 1.57" />
+
+	      <body name="finger_middle_link_visuals_240" pos="0 0 0">
+		<geom pos="0.0488 0 -0.0462" type="mesh" rgba="0.17 0.17 0.17 1.0" mesh="motor_sim" conaffinity="0" contype="0"/>
+		<geom pos="0.0488 0 -0.13" axisangle="0 1 0 1.5707963267948966" type="cylinder" size="0.005 0.0075" rgba="0.17 0.17 0.17 1.0" conaffinity="0" contype="0"/>
+		<geom pos="0.025 0 -0.09" type="cylinder" size="0.002 0.06" rgba="0.17 0.17 0.17 1.0" conaffinity="0" contype="0"/>
+              <geom pos="0.024 0 -0.16" axisangle="0 1 0 1.5707963267948966" type="cylinder" size="0.014 0.001" rgba="0.17 0.17 0.17 1.0" conaffinity="0" contype="0"/>
+	    </body>
+
+                <geom type="mesh" rgba="0.804 0.764 0.761 1" mesh="int_sim" />
+                <body name="finger_lower_link_240" pos="0.05015 0 -0.16">
+                    <inertial pos="0.0172829 -7.03432e-06 -0.0847363" quat="1 8.17879e-05 0.000475957 -0.00013458" mass="0.08669" diaginertia="0.000410131 0.000407733 7.32858e-06" />
+                    <joint name="finger_middle_to_lower_joint_240" pos="0 0 0" axis="1 0 0" limited="true" range="-2.7 0" />
+                    <geom type="mesh" rgba="0.804 0.764 0.761 1" mesh="tip_link_sim" />
+                    <geom pos="0.019 0 -0.16" type="mesh" rgba="0.33 0.36 0.37 1" mesh="tip_sim" />
+                </body>
+            </body>
+        </body>
+    </worldbody>
+
+    <actuator>
+      <motor name="finger_base_to_upper_joint_0"     joint="finger_base_to_upper_joint_0"     ctrlrange="-0.3 0.3" ctrllimited="true" />
+      <motor name="finger_upper_to_middle_joint_0"   joint="finger_upper_to_middle_joint_0"   ctrlrange="-0.3 0.3" ctrllimited="true" />
+      <motor name="finger_middle_to_lower_joint_0"   joint="finger_middle_to_lower_joint_0"   ctrlrange="-0.3 0.3" ctrllimited="true" />
+      <motor name="finger_base_to_upper_joint_120"   joint="finger_base_to_upper_joint_120"   ctrlrange="-0.3 0.3" ctrllimited="true" />
+      <motor name="finger_upper_to_middle_joint_120" joint="finger_upper_to_middle_joint_120" ctrlrange="-0.3 0.3" ctrllimited="true" />
+      <motor name="finger_middle_to_lower_joint_120" joint="finger_middle_to_lower_joint_120" ctrlrange="-0.3 0.3" ctrllimited="true" />
+      <motor name="finger_base_to_upper_joint_240"   joint="finger_base_to_upper_joint_240"   ctrlrange="-0.3 0.3" ctrllimited="true" />
+      <motor name="finger_upper_to_middle_joint_240" joint="finger_upper_to_middle_joint_240" ctrlrange="-0.3 0.3" ctrllimited="true" />
+      <motor name="finger_middle_to_lower_joint_240" joint="finger_middle_to_lower_joint_240" ctrlrange="-0.3 0.3" ctrllimited="true"/>
+    </actuator>
+
+</mujoco>

@@ -1,0 +1,15 @@
+simulation:
+  num_substeps: 25
+  xml_config_filename: null
+  scale: null
+
+rendering:
+  cam_views: []
+  image_resolution: [256, 256]
+
+builder_cfg:
+  objects: []
+
+sampler_cfg:
+  x_range: [-0.425, 0.]
+  y_range: [-0.5, 0.5]

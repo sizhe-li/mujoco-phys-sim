@@ -1,0 +1,38 @@
+simulation:
+  num_substeps: 25
+  xml_config_filename: null
+  scale: null
+
+rendering:
+  cam_views: []
+  image_resolution: [256, 256]
+
+builder_cfg:
+  pusher:
+    position: [-0.4, 0.5, 0.38]
+    size: [0.16, 0.36]
+    rgba: [0.5, 0.1, 0.1, 1.0]
+    x_limits: [-1.5, 1.5]
+    y_limits: [-1.5, 1.5]
+    material: 
+      texture_type: "Can"
+      texture_name: "pusher_texture"
+      material_name: "pusher_material"
+      texrepeat: "1 1"
+      specular: "0.4"
+      shininess: "0.1"
+  
+  objects: 
+    - name: "rod"
+      position: [0, -0.1, 0.15]
+      material:
+        texture_type: "Dirt"
+        texture_name: "rod_texture"
+        material_name: "rod_material"
+        texrepeat: "1 1"
+        specular: "0.4"
+        shininess: "0.5"
+
+sampler_cfg:
+  x_range: [-0.7, 0.7]
+  y_range: [-0.7, 0.7]

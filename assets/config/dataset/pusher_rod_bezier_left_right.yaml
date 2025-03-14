@@ -1,0 +1,13 @@
+defaults:
+  - push_env_cfg: pusher_under_rod
+dump_dir: "diff-force/diffusion-forcing/data/pusher_rod_bezier_left_right/"
+num_trajs: 200
+remove_exists: True
+horizon: 20
+debug: False
+use_obj: True
+train_val_split: 0.8
+num_blocks: 1
+object_type: ["rod"]
+object_xy_pos: [[0, -0.25]]
+use_flow: True

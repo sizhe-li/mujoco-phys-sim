@@ -1,0 +1,9 @@
+dump_dir: "data/pusher/A"
+num_trajs: 200
+remove_exists: True
+horizon: 50
+debug: False
+use_obj: True
+train_val_split: 0.8
+num_blocks: 1
+object_type: ["A"]

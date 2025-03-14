@@ -1,0 +1,29 @@
+simulation:
+  num_substeps: 25
+  xml_config_filename: null
+  scale: null
+
+rendering:
+  cam_views: []
+  image_resolution: [256, 256]
+
+builder_cfg:
+  objects: 
+    - name: "box"
+      size: [0.12, 0.12, 0.1] 
+      # size: [0.1, 0.1, 0.1] 
+      rgba: [0.5, 0.5, 0.5, 1]
+      position: [-0.41, 0, 0.0]
+      density: 100
+      scale: [0.005, 0.005, 0.005]
+      material:
+        texture_type: "Dirt"
+        texture_name: "rod_texture"
+        material_name: "rod_material"
+        texrepeat: "1 1"
+        specular: "0.4"
+        shininess: "0.5"
+
+sampler_cfg:
+  x_range: [-0.3, -0.3]
+  y_range: [-0.2, 0.2]

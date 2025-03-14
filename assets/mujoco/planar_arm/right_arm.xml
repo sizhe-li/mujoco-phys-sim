@@ -1,0 +1,51 @@
+<mujoco model="robot_right">
+  <compiler eulerseq="XYZ" autolimits="true"/>
+
+  <default>
+    <default class="right_arm"/>
+  </default>
+  <asset>
+    <material name="ra_material_1" class="right_arm" emission="0" specular="0" rgba="0.15999999642372131 0.15999999642372131 0.15999999642372131 1"/>
+    <material name="ra_material_2" class="right_arm" emission="0" specular="0" rgba="0.15999999642372131 0.15999999642372131 0.15999999642372131 1"/>
+    <material name="ra_material_3" class="right_arm" emission="0" specular="0" rgba="0.63999998569488525 0.63999998569488525 0.63999998569488525 1"/>
+    <material name="ra_material_4" class="right_arm" emission="0" specular="0" rgba="0.15999999642372131 0.15999999642372131 0.15999999642372131 1"/>
+    <material name="ra_material_5" class="right_arm" emission="0" specular="0" rgba="0.15999999642372131 0.15999999642372131 0.15999999642372131 1"/>
+    <material name="ra_material_6" class="right_arm" emission="0" specular="0" rgba="0.15999999642372131 0.15999999642372131 0.15999999642372131 1"/>
+    <material name="ra_material_7" class="right_arm" emission="0" specular="0" rgba="0.15999999642372131 0.15999999642372131 0.15999999642372131 1"/>
+  </asset>
+  <worldbody>
+    <body name="ra_0" pos="0 0.1 0.05" euler="0 -90 0">
+<!--      <inertial pos="0 0 0" mass="1" fullinertia="0.0033 0.0033 0.0033 0 0 0"/>-->
+      <geom name="ra_collision" class="right_arm" type="sphere" group="3" size="0.050000000000000003" friction="0.80000000000000004 0.0050000000000000001 0.0001" pos="0 0 0" euler="0 -0 0"/>
+      <geom name="ra_ball" class="right_arm" type="sphere" contype="0" conaffinity="0" group="0" size="0.050000000000000003" pos="0 0 0" euler="0 -0 0"/>
+<!--      <freejoint name="ra_freejoint"/>-->
+      <body name="ra_1" pos="0 0 0" euler="0 -0 0">
+<!--        <inertial pos="0 0 0" mass="1" fullinertia="0.0033 0.0033 0.0033 0 0 0"/>-->
+        <geom name="ra_collision_0" class="right_arm" type="sphere" group="3" size="0.050000000000000003" friction="0.80000000000000004 0.0050000000000000001 0.0001" pos="0 0.10000000000000001 0" euler="0 -0 0"/>
+        <geom name="ra_collision_1" class="right_arm" type="sphere" group="3" size="0.050000000000000003" friction="0.80000000000000004 0.0050000000000000001 0.0001" pos="0 0.20000000000000001 0" euler="0 -0 0"/>
+        <geom name="ra_collision_2" class="right_arm" type="sphere" group="3" size="0.050000000000000003" friction="0.80000000000000004 0.0050000000000000001 0.0001" pos="0 0.29999999999999999 0" euler="0 -0 0"/>
+        <geom name="ra_ball0" class="right_arm" type="sphere" contype="0" conaffinity="0" group="0" size="0.050000000000000003" material="ra_material_1" pos="0 0.10000000000000001 0" euler="0 -0 0"/>
+        <geom name="ra_ball1" class="right_arm" type="sphere" contype="0" conaffinity="0" group="0" size="0.050000000000000003" material="ra_material_2" pos="0 0.20000000000000001 0" euler="0 -0 0"/>
+        <geom name="ra_ball2" class="right_arm" type="sphere" contype="0" conaffinity="0" group="0" size="0.050000000000000003" material="ra_material_3" pos="0 0.29999999999999999 0" euler="0 -0 0"/>
+        <geom name="ra_cylinder" class="right_arm" type="cylinder" contype="0" conaffinity="0" group="0" size="0.050000000000000003 0.050000000000000003" material="ra_material_4" pos="0 0.14999999999999999 0" euler="89.999999610681101 -0 0"/>
+        <joint name="robot:ra_joint_1" class="right_arm" type="hinge" pos="0 0 0" axis="1 0 0" limited="true" range="0 90.000210459149713"/>
+        <body name="ra_2" pos="0 0.29999999999999999 0" euler="0 -0 0">
+<!--          <inertial pos="0 0 0" mass="1" fullinertia="0.0033 0.0033 0.0033 0 0 0"/>-->
+          <geom name="ra_collision_0_0" class="right_arm" type="sphere" group="3" size="0.050000000000000003" friction="0.80000000000000004 0.0050000000000000001 0.0001" pos="0 0.10000000000000001 0" euler="0 -0 0"/>
+          <geom name="ra_collision_1_0" class="right_arm" type="sphere" group="3" size="0.050000000000000003" friction="0.80000000000000004 0.0050000000000000001 0.0001" pos="0 0.20000000000000001 0" euler="0 -0 0"/>
+          <geom name="ra_ball0_0" class="right_arm" type="sphere" contype="0" conaffinity="0" group="0" size="0.050000000000000003" material="ra_material_5" pos="0 0.10000000000000001 0" euler="0 -0 0"/>
+          <geom name="ra_ball1_0" class="right_arm" type="sphere" contype="0" conaffinity="0" group="0" size="0.050000000000000003" material="ra_material_6" pos="0 0.20000000000000001 0" euler="0 -0 0"/>
+          <geom name="ra_cylinder_0" class="right_arm" type="cylinder" contype="0" conaffinity="0" group="0" size="0.050000000000000003 0.050000000000000003" material="ra_material_7" pos="0 0.14999999999999999 0" euler="89.999999610681101 -0 0"/>
+          <joint name="robot:ra_joint_2" class="right_arm" type="hinge" pos="0 0 0" axis="1 0 0" limited="true" range="0 137.50987083139756"/>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+
+  <actuator>
+    <position class="right_arm" name="robot:ra_actuator_1" joint="robot:ra_joint_1" kp="10"
+              ctrlrange="0 1.57"/>
+    <position class="right_arm" name="robot:ra_actuator_2" joint="robot:ra_joint_2" kp="10"
+              ctrlrange="0 2.399828"/>
+  </actuator>
+</mujoco>

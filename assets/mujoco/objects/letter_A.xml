@@ -1,0 +1,21 @@
+<mujoco model="letter_A">
+    <asset>
+        <mesh file="meshes/letter_A.obj" name="letter_A_mesh" scale="0.02 0.02 0.01" />
+        <texture type="2d" name="letter_A_texture"
+            file="/home/sizheli/anaconda3/envs/scene-jacobian-discovery/lib/python3.12/site-packages/robosuite/models/assets/textures/dark-wood.png" />
+        <!-- <texture builtin="flat" height="1" name="letter_A_texture" rgb1="0.8 0.6 0.4" type="2d"
+            width="1" /> -->
+        <material name="letter_A_material" texture="letter_A_texture" texrepeat="1 1"
+            texuniform="true" />
+
+    </asset>
+    <worldbody>
+        <body>
+            <body name="object">
+                <geom pos="0 0 0" mesh="letter_A_mesh" type="mesh" material="letter_A_material"
+                    solimp="0.998 0.998 0.001" solref="0.001 1"
+                    density="200" friction="0.95 0.3 0.1" group="0" condim="4" />
+            </body>
+        </body>
+    </worldbody>
+</mujoco>

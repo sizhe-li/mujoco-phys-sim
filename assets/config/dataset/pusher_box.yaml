@@ -1,0 +1,8 @@
+dump_dir: "data/pusher_box"
+num_trajs: 1000
+remove_exists: False
+horizon: 50
+debug: False
+use_obj: True
+train_val_split: 0.8
+object_type: "box"

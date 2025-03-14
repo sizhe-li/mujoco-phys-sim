@@ -1,0 +1,78 @@
+<mujoco model="robot_left">
+  <compiler eulerseq="XYZ" autolimits="true" />
+
+  <default>
+    <default class="left_arm" />
+  </default>
+  <asset>
+    <material name="la_material_1" class="left_arm" emission="0" specular="0"
+      rgba="0.16 0.16 0.16 1" />
+    <material name="la_material_2" class="left_arm" emission="0" specular="0"
+      rgba="0.16 0.16 0.16 1" />
+    <material name="la_material_3" class="left_arm" emission="0" specular="0"
+      rgba="0.64 0.64 0.64 1" />
+    <material name="la_material_4" class="left_arm" emission="0" specular="0"
+      rgba="0.16 0.16 0.16 1" />
+    <material name="la_material_5" class="left_arm" emission="0" specular="0"
+      rgba="0.16 0.16 0.16 1" />
+    <material name="la_material_6" class="left_arm" emission="0" specular="0"
+      rgba="0.16 0.16 0.16 1" />
+    <material name="la_material_7" class="left_arm" emission="0" specular="0"
+      rgba="0.16 0.16 0.16 1" />
+  </asset>
+  <worldbody>
+    <body name="la_0" pos="0 -0.1 0.05" euler="-90 -60 -90">
+      <inertial pos="0 0 0" mass="1" fullinertia="0.003 0.003 0.003 0 0 0" />
+      <geom name="la_collision" class="left_arm" type="sphere" group="3" size="0.05"
+        pos="0 0 0" euler="0 -0 0" />
+      <geom name="la_ball" class="left_arm" type="sphere" group="0" size="0.05" pos="0 0 0"
+        euler="0 -0 0" />
+      <body name="la_1" pos="0 0 0" euler="0 -0 0">
+        <inertial pos="0 0 0" mass="0.1" fullinertia="0.003 0.003 0.003 0 0 0" />
+        <geom name="la_collision_0" class="left_arm" type="sphere" group="3" size="0.05"
+          pos="0 -0.10 0" euler="0 -0 0" />
+        <geom name="la_collision_1" class="left_arm" type="sphere" group="3" size="0.05"
+          pos="0 -0.20 0" euler="0 -0 0" />
+        <geom name="la_collision_2" class="left_arm" type="sphere" group="3" size="0.05"
+          pos="0 -0.30 0" euler="0 -0 0" />
+        <geom name="la_ball0" class="left_arm" type="sphere" group="0" size="0.05"
+          material="la_material_1" pos="0 -0.10 0" euler="0 -0 0" />
+        <geom name="la_ball1" class="left_arm" type="sphere" group="0" size="0.05"
+          material="la_material_2" pos="0 -0.20 0" euler="0 -0 0" />
+        <geom name="la_ball2" class="left_arm" type="sphere" group="0" size="0.05"
+          material="la_material_3" pos="0 -0.30 0" euler="0 -0 0" />
+        <geom name="cylinder" class="left_arm" type="cylinder" group="0" size="0.05 0.05"
+          material="la_material_4" pos="0 -0.150 0" euler="90 -0 0" />
+        <joint name="robot:la_joint_1" class="left_arm" type="hinge" pos="0 0 0" axis="-1 0 0"
+          limited="true" range="0 90" damping="0.50" />
+        <body name="la_2" pos="0 -0.30 0" euler="0 -0 0">
+          <inertial pos="0 0 0" mass="0.01" fullinertia="0.003 0.003 0.003 0 0 0" />
+          <geom name="la_collision_0_0" class="left_arm" type="sphere" group="3"
+            size="0.05" pos="0 -0.10 0" euler="0 -0 0" />
+          <geom name="la_collision_1_0" class="left_arm" type="sphere" group="3"
+            size="0.05" pos="0 -0.20 0" euler="0 -0 0" />
+          <geom name="la_ball0_0" class="left_arm" type="sphere" group="0"
+            size="0.05" material="la_material_5" pos="0 -0.10 0"
+            euler="0 -0 0" />
+          <geom name="la_ball1_0" class="left_arm" type="sphere" group="0"
+            size="0.05" material="la_material_6" pos="0 -0.20 0"
+            euler="0 -0 0" />
+          <geom name="cylinder_0" class="left_arm" type="cylinder" group="0"
+            size="0.05 0.05" material="la_material_7"
+            pos="0 -0.15 0" euler="90 -0 0" />
+          <joint name="robot:la_joint_2" class="left_arm" type="hinge" pos="0 0 0" axis="-1 0 0"
+            limited="true" range="0 137.50987083139756" damping="0.50" />
+          <site name="lf_site_tip" pos="0 0 0.0" />
+        </body>
+      </body>
+    </body>
+  </worldbody>
+
+  <actuator>
+    <position class="left_arm" name="robot:la_actuator_1" joint="robot:la_joint_1" 
+      ctrlrange="0 2.1" />
+    <position class="left_arm" name="robot:la_actuator_2" joint="robot:la_joint_2" 
+      ctrlrange="0 2.1" />
+  </actuator>
+
+</mujoco>

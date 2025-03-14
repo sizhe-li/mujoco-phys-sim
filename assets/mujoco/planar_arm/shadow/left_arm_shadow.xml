@@ -1,0 +1,143 @@
+<mujoco model="left_shadow_hand">
+    <compiler angle="radian" meshdir="assets" autolimits="true" />
+
+    <option impratio="10" />
+
+    <default>
+        <default class="lh_left_hand">
+            <mesh scale="0.001 0.001 0.001" />
+            <joint axis="1 0 0" damping="0.05" armature="0.0002" frictionloss="0.01" />
+            <position forcerange="-1 1" />
+
+            <default class="lh_wrist">
+                <joint damping="0.5" />
+                <default class="lh_wrist_y">
+                    <joint axis="0 -1 0" range="-0.523599 0.174533" />
+                    <position kp="10" ctrlrange="-0.523599 0.174533" forcerange="-10 10" />
+                </default>
+                <default class="lh_wrist_x">
+                    <joint range="-0.698132 0.488692" />
+                    <position kp="8" ctrlrange="-0.698132 0.488692" forcerange="-5 5" />
+                </default>
+            </default>
+
+            <default class="lh_thumb">
+                <default class="lh_thbase">
+                    <joint axis="0 0 1" range="-1.0472 1.0472" />
+                    <position kp="0.4" ctrlrange="-1.0472 1.0472" forcerange="-3 3" />
+                </default>
+                <default class="lh_thproximal">
+                    <joint axis="-1 0 0" range="0 1.22173" />
+                    <position ctrlrange="0 1.22173" forcerange="-2 2" />
+                </default>
+                <default class="lh_thhub">
+                    <joint axis="-1 0 0" range="-0.20944 0.20944" />
+                    <position kp="0.5" ctrlrange="-0.20944 0.20944" />
+                </default>
+                <default class="lh_thmiddle">
+                    <joint axis="0 -1 0" range="-0.698132 0.698132" />
+                    <position kp="1.5" ctrlrange="-0.698132 0.698132" />
+                </default>
+                <default class="lh_thdistal">
+                    <joint range="-0.261799 1.5708" />
+                    <position ctrlrange="-0.261799 1.5708" />
+                </default>
+            </default>
+
+            <default class="lh_metacarpal">
+                <joint axis="0.573576 0 0.819152" range="0 0.785398" />
+                <position ctrlrange="0 0.785398" />
+            </default>
+            <default class="lh_knuckle">
+                <joint axis="0 -1 0" range="-0.001 0.001" />
+                <position ctrlrange="-0.001 0.001" />
+            </default>
+            <default class="lh_proximal">
+                <joint range="-0.261799 1.5708" />
+                <position ctrlrange="-0.261799 1.5708" />
+            </default>
+            <default class="lh_middle_distal">
+                <joint range="0 1.5708" />
+                <position kp="0.5" ctrlrange="0 3.1415" />
+            </default>
+
+            <default class="lh_plastic">
+                <geom solimp="0.5 0.99 0.0001" solref="0.005 1" />
+                <default class="lh_plastic_visual">
+                    <geom type="mesh" material="black" contype="0" conaffinity="0" group="2" />
+                </default>
+                <default class="lh_plastic_collision">
+                    <geom group="3" />
+                </default>
+            </default>
+        </default>
+    </default>
+
+    <asset>
+        <material name="lh_black" specular="0.5" shininess="0.25" rgba="0.16355 0.16355 0.16355 1" />
+        <material name="lh_gray" specular="0.0" shininess="0.25" rgba="0.80848 0.80848 0.80848 1" />
+        <material name="lh_metallic" specular="0" shininess="0.25" rgba="0.9 0.9 0.9 1" />
+
+        <!-- <mesh class="lh_left_hand" file="forearm_0.obj" />
+        <mesh class="lh_left_hand" file="forearm_1.obj" />
+        <mesh class="lh_left_hand" file="forearm_collision.obj" />
+        <mesh class="lh_left_hand" file="wrist.obj" scale="-0.001 0.001 0.001" />
+        <mesh class="lh_left_hand" file="palm.obj" scale="-0.001 0.001 0.001" />
+        <mesh class="lh_left_hand" file="f_knuckle.obj" />
+        <mesh class="lh_left_hand" file="f_proximal.obj" />
+        <mesh class="lh_left_hand" file="f_middle.obj" />
+        <mesh class="lh_left_hand" file="f_distal_pst.obj" />
+        <mesh class="lh_left_hand" file="lf_metacarpal.obj" scale="-0.001 0.001 0.001" />
+        <mesh class="lh_left_hand" file="th_proximal.obj" />
+        <mesh class="lh_left_hand" file="th_middle.obj" />
+        <mesh class="lh_left_hand" file="th_distal_pst.obj" /> -->
+    </asset>
+
+    <worldbody>
+        <body name="lh_ffknuckle" pos="0.0 -0.02 -0.01" euler="1.57 -0.6 -1.57">
+            <inertial mass="0.008" pos="0 0 0" quat="0.5 0.5 -0.5 0.5"
+                diaginertia="3.2e-07 2.6e-07 2.6e-07" />
+            <joint name="lh_FFJ4" class="lh_knuckle" axis="0 1 0" />
+            <geom name="lh_ffknuckle" pos="0 0 0.0005" class="lh_plastic_visual" mesh="f_knuckle"
+                material="metallic" />
+            <geom size="0.009 0.009" quat="1 0 1 0" type="cylinder" class="lh_plastic_collision" />
+            <body name="lh_ffproximal">
+                <inertial mass="0.03" pos="0 0 0.0225" quat="1 0 0 1"
+                    diaginertia="1e-05 9.8e-06 1.8e-06" />
+                <joint name="robot:lh_FFJ3" class="lh_proximal" />
+                <geom name="lh_ffproximal" class="lh_plastic_visual" mesh="f_proximal" />
+                <geom size="0.009 0.02" pos="0 0 0.025" type="capsule" class="lh_plastic_collision" />
+                <body name="lh_ffmiddle" pos="0 0 0.045">
+                    <inertial mass="0.017" pos="0 0 0.0125" quat="1 0 0 1"
+                        diaginertia="2.7e-06 2.6e-06 8.7e-07" />
+                    <joint name="robot:lh_FFJ2" class="lh_middle_distal" />
+                    <geom name="lh_ffmiddle" class="lh_plastic_visual" mesh="f_middle" />
+                    <geom size="0.009 0.0125" pos="0 0 0.0125" type="capsule"
+                        class="lh_plastic_collision" />
+                    <body name="lh_ffdistal" pos="0 0 0.025">
+                        <site name="lh_site_tip" pos="0 0 0.0130769" />
+                        <inertial mass="0.013" pos="0 0 0.0130769" quat="1 0 0 1"
+                            diaginertia="1.28092e-06 1.12092e-06 5.3e-07" />
+                        <joint name="robot:lh_FFJ1" class="lh_middle_distal" />
+                        <geom name="lh_ffdistal" class="lh_plastic_visual" mesh="f_distal_pst" />
+                        <geom class="lh_plastic_collision" type="mesh" mesh="f_distal_pst" />
+                    </body>
+                </body>
+            </body>
+        </body>
+    </worldbody>
+
+
+    <tendon>
+        <fixed name="robot:lh_FFJ1">
+            <joint joint="robot:lh_FFJ2" coef="1" />
+            <joint joint="robot:lh_FFJ1" coef="1" />
+        </fixed>
+
+    </tendon>
+
+    <actuator>
+        <position name="robot:lh_A_FFJ3" joint="robot:lh_FFJ3" class="lh_proximal" />
+        <position name="robot:lh_A_FFJ1" tendon="robot:lh_FFJ1" class="lh_middle_distal" />
+    </actuator>
+</mujoco>

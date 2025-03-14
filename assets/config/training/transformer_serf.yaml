@@ -1,0 +1,47 @@
+exp_name: transformer_serf
+inference: False
+resume: False
+ckpt: ""
+
+data:
+  robot_name: "panda"
+  root: "data/franka_arm_only2/"
+
+  batch_size: 128
+  num_workers: 16
+
+  overfit_to_index: null
+  trgt_img_size: [96, 96]
+  ray_bundle_size: 256
+  ray_patch_size: null
+
+optim:
+  lr: 1e-3
+  total_steps: 1000000
+  vis_every: 1000
+  save_every: 1000
+
+model:
+  rf:
+    feat_dim: 128
+    pos_octave: 10
+    ray_octave: 4
+    n_joints: 8
+
+    decoder_depth: 4
+    heads: 16
+    dim_head: 64
+    mlp_dim: 256
+
+    depth_render_head: 1
+    token_mode: 'mult'
+
+  renderer:
+    n_coarse: 128
+    n_fine: 64
+    perturb: 0.0
+    use_lindisp: False
+    chunk: 32768 # 32 * 1024 = 32768
+    bkgd_color:
+
+

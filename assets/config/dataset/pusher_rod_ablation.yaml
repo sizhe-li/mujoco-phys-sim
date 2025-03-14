@@ -1,0 +1,40 @@
+push_env_cfg:
+  simulation:
+    num_substeps: 25
+    xml_config_filename: null
+
+  rendering:
+    cam_views: []
+    image_resolution: [256, 256]
+
+  builder_cfg:
+    pusher:
+      position: [0.0, 0.36, 0.25]
+      size: [0.16, 0.16]
+      rgba: [0.5, 0.1, 0.1, 1.0]
+      x_limits: [-1.5, 1.5]
+      y_limits: [-1.5, 1.5]
+      material: 
+        texture_type: "Can"
+        texture_name: "can"
+        material_name: "can_mat"
+        texrepeat: "1 1"
+        specular: "0.4"
+        shininess: "0.1"
+    
+    objects: []
+
+  sampler_cfg:
+    x_range: [-1.0, 1.0]
+    y_range: [-1.0, 1.0]
+    
+dump_dir: "data/pusher/rod_ablation"
+num_trajs: 200
+remove_exists: True
+horizon: 50
+debug: False
+use_obj: True
+train_val_split: 0.8
+num_blocks: 1
+object_type: ["rod"]
+object_xy_pos: [[0, -0.25]]

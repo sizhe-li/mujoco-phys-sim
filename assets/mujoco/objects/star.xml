@@ -1,0 +1,18 @@
+<mujoco model="star">
+    <asset>
+        <mesh file="meshes/star.obj" name="star_mesh" scale="0.02 0.02 0.01" />
+        <texture builtin="flat" height="1" name="star_texture" rgb1="0.8 0.6 0.4" type="2d"
+            width="1" />
+        <material name="star_material" texture="star_texture" texrepeat="1 1"
+            texuniform="true" />
+
+    </asset>
+    <worldbody>
+        <body>
+            <body name="object">
+                <geom pos="0 0 0" mesh="star_mesh" type="mesh" material="star_material" solimp="0.998 0.998 0.001" solref="0.001 1"
+                      density="500" friction="0.95 0.3 0.1" group="0" condim="4"/>
+            </body>
+        </body>
+    </worldbody>
+</mujoco>

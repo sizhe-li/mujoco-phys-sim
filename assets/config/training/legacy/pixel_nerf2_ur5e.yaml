@@ -1,0 +1,62 @@
+exp_name: pixel_nerf
+inference: False
+resume: False
+ckpt: ""
+
+data:
+  debug: False
+
+  batch_size: 64
+  num_workers: 16
+
+  dataset_name: scene-rep
+  rel_location: "data/ur5e/"
+
+  norm_qpos_min: -1.0
+  norm_qpos_max: 1.0
+
+  near: 0.0
+  far: 2.7
+
+  img_res: [256, 256]
+  output_size: [128, 128]
+
+  use_depth: False
+  ret_patch: False
+
+  subsample_ray: 256
+
+
+
+test_views:
+  spherical:
+    num_views: 100
+    radius: 2.0
+    cam_height: 1.5
+    lookat: [0., 0., 0.5]
+
+optim:
+  lr: 4e-4
+  total_steps: 1000000
+  vis_every: 1000
+  save_every: 1000
+
+
+model:
+  encoder:
+    backbone: resnet34
+  rf:
+    n_feats: 512
+    n_blocks: 3
+    d_hidden: 512
+
+
+  renderer:
+    n_coarse: 256
+    n_fine: 128
+    perturb: 0.0
+    use_lindisp: False
+    chunk: 32768 # 32 * 1024 = 32768
+    bkgd_color:
+
+

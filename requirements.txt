@@ -1,0 +1,10 @@
+mujoco
+robosuite
+mediapy
+hydra-core
+jupyter
+dacite
+h5py
+torch 
+torchvision
+splipy

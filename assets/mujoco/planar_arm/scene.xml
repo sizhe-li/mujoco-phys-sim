@@ -1,0 +1,56 @@
+<mujoco model="planar arm scene">
+
+    <include file="left_arm.xml" />
+    <include file="right_arm.xml" />
+    <statistic center="0 0 0.05" extent="0.8" />
+
+    <visual>
+        <headlight diffuse="0.6 0.6 0.6" ambient="0.3 0.3 0.3" specular="0 0 0" />
+        <rgba haze="0.15 0.25 0.35 1" />
+        <global azimuth="120" elevation="-20" />
+    </visual>
+
+    <asset>
+        <texture name="grid" type="2d" builtin="flat"
+            rgb1="1 1 1" width="512" height="512" />
+        <material name="grid" texture="grid" texrepeat="1 1" texuniform="true" reflectance="0" />
+        <material name="uniform" texuniform="true" reflectance="0" specular="0" shininess="0" />
+    </asset>
+
+
+    <worldbody>
+        <camera name="birdview" pos="-0.494 0.001 1.981"
+            xyaxes="0.001 1.000 -0.000 -1.000 0.001 0.026" />
+        <geom name="floor" type="plane" condim="3" size="0 0 0.050000000000000003" material="grid"
+            pos="0 0 -0.02" />
+        <light pos="0 0 1.5" dir="0 0 -1" directional="true" castshadow="false" />
+
+        <!-- <body name="object" pos="-0.30 0 0.15">
+            <geom pos="0.0 0.0 0.025" type="cylinder" rgba="0.0 0.0 1.0 1.0" size="0.01 0.25" conaffinity="0"
+        contype="0"/>
+            <geom pos="0.0 0.025 0.0" axisangle="1 0 0 90" type="cylinder" rgba="0.0 1.0 0.0 1.0" size="0.01
+        0.25" conaffinity="0" contype="0"/>
+            <geom pos="0.025 0.0 0.0" axisangle="0 1 0 90" type="cylinder" rgba="1.0 0.0 0.0 1.0" size="0.01
+        0.25" conaffinity="0" contype="0"/>
+            <geom name="object" type="box" size="0.15 0.15 0.05" rgba="0 0.07 0.05 1"
+                  friction="0.5" priority="1" material="uniform"/> -->
+        <!--            <geom name="object_hidden" type="box" size="0.15 0.15 0.05"-->
+        <!--                  material="material:hidden" condim="4" contype="0" conaffinity="0" mass="0"/>-->
+        <!-- <joint name="object:joint" type="free"/> -->
+        <!-- </body> -->
+
+        <!--        <body name="target" pos="-0.85 0 0.05">-->
+        <!--            <geom pos="0.0 0.0 0.025" type="cylinder" rgba="0.0 0.0 1.0 1.0" size="0.01 0.25"
+        conaffinity="0" contype="0"/>-->
+        <!--            <geom pos="0.0 0.025 0.0" axisangle="1 0 0 90" type="cylinder" rgba="0.0 1.0 0.0 1.0"
+        size="0.01 0.25" conaffinity="0" contype="0"/>-->
+        <!--            <geom pos="0.025 0.0 0.0" axisangle="0 1 0 90" type="cylinder" rgba="1.0 0.0 0.0 1.0"
+        size="0.01 0.25" conaffinity="0" contype="0"/>-->
+        <!--            <geom name="target" type="box" size="0.15 0.15 0.05" rgba="0 0.07 0.05 0.5"-->
+        <!--              material="uniform" condim="4" contype="0" conaffinity="0"/>-->
+        <!--            <joint name="target:joint" type="free"/>-->
+        <!--        </body>-->
+
+    </worldbody>
+
+</mujoco>

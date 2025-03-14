@@ -1,0 +1,26 @@
+exp_name: dynamics_2d
+inference: False
+resume: False
+ckpt: ""
+
+data:
+  debug: False
+  horizon: 50
+
+  dataset_name: dynamics_2d
+  relative_loc: "data/pusher_box"
+
+  batch_size: 160
+  num_workers: 8
+
+  norm_qpos_min: -1.0
+  norm_qpos_max: 1.0
+
+optim:
+  lr: 1e-3
+  total_steps: 1000000
+  vis_every: 1000
+  save_every: 1000
+
+model:
+
