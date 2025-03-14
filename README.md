@@ -11,6 +11,8 @@ Please consider citing our paper if this simulator is helpful for you!
 
 Stay tuned, or ping me at sizheli@mit.edu if you need it urgently.
 
+**Add a Teaser Figure**
+
 **A. 2D environments**
 1. Two-link Finger Environment
 2. Shadow Finger Environment
