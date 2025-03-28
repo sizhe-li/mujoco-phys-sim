@@ -545,10 +545,10 @@ class PushEnv(RobotEnv):
 
     def convert_local_command_to_global(self, du):
         # curr_pos = self.data.get_body_xpos(f"pusher_main")[:2]
-        print("curr pos from xbody", self.data.get_body_xpos("pusher_main")[:2])
+        # print("curr pos from xbody", self.data.get_body_xpos("pusher_main")[:2])
         self.controller.update()
         curr_pos = self.controller.joint_pos.copy()
-        print("curr_pos from controller", curr_pos)
+        # print("curr_pos from controller", curr_pos)
         assert len(du) == len(curr_pos), "shape must be the same"
         next_pos = curr_pos + du
 

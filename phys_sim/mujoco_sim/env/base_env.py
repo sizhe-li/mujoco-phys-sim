@@ -5,10 +5,16 @@ from typing import List, Tuple
 import mujoco
 import numpy as np
 from mujoco_sim.utils import xml_utils
-from robosuite.utils.binding_utils import (MjData, MjModel,
-                                           MjRenderContextOffscreen, MjSim,
-                                           MjSimState)
+from robosuite.utils.binding_utils import (
+    MjData,
+    MjModel,
+    MjRenderContextOffscreen,
+    MjSim,
+    MjSimState,
+)
 from robosuite.utils.camera_utils import get_real_depth_map
+
+map_to_root = Path(__file__).resolve().parent.parent.parent.parent
 
 
 @dataclass
@@ -67,6 +73,7 @@ class RobotEnv:
             self.mj_model = mj_model
 
         elif xml_config_filename is not None:
+            xml_config_filename = map_to_root / xml_config_filename
             print(f"Loading XML file {xml_config_filename}")
             self.mj_model = xml_utils.load_mj_model_from_xml(
                 str(xml_config_filename), scale=scale
