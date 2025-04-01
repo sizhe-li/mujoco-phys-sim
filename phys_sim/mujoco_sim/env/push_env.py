@@ -543,6 +543,19 @@ class PushEnv(RobotEnv):
             if get_obs is not None:
                 get_obs(self)
 
+    def circle_trajectory(self, horizon=50, get_obs=None):
+        # draw a circle
+        self.reset()
+        self.controller.interpolator.total_steps = 32 * 2
+
+        for i in range(horizon):
+            angle = i / horizon * 2 * np.pi
+            position_based_command = np.array([np.cos(angle), np.sin(angle)]) * 0.8
+            self.step(position_based_command)
+
+            if get_obs is not None:
+                get_obs(self)
+
     def convert_local_command_to_global(self, du):
         # curr_pos = self.data.get_body_xpos(f"pusher_main")[:2]
         # print("curr pos from xbody", self.data.get_body_xpos("pusher_main")[:2])
